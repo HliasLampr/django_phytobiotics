@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+    <h1>Search</h1>
+    <form>
+        <input type="search" placeholder="City" name="city" value="">
+        <input type="search" placeholder="State" name="state" value="">
+        <button type="submit" >Search</button>
+    </form>
+
+{% if results %}
+    <h3>We found {{ count }} result{{ count|pluralize }} for your search </h3>
+    {% for mytuple in results %}
+        <div>
+            {{ mytuple.0 }},
+            {{ mytuple.1 }}
+
+        </div>
+    {% endfor %}
+{%elif not search_term %}
+    <h3>Insert your search here.</h3>
+{%elif not results %}
+    <p>No results found.</p>
+{% endif %}
+</body>
+</html>
